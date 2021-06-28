@@ -11,8 +11,14 @@ export default function Landing() {
   const [flag,setFlag] = useState(false);
   const search = async (e) => {
     e.preventDefault();
+    if(query === null){
+      window.alert('Please select a city')
+    }
     const data = await fetchWeather(query);
-    console.log(data);
+    // console.log(data);
+    if(data === undefined){
+      window.alert('Please enter a valid city name')
+    }
     setWeather(data);
     setFlag(true)
     setQuery('');
